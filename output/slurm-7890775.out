@@ -1,0 +1,54 @@
+Running on H4H cluster
+Provided cluster nodes: 10
+Job counts:
+	count	jobs
+	1	all
+	4	bamCoverage
+	2	compute_matrix_cohort
+	2	plot
+	9
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/hhp3_h3k4me3_dedup.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group2/bw/k4test2_hi.bw
+    jobid: 6
+    wildcards: cohort=group2, sample=k4test2, identifier=hi
+
+
+    bamCoverage     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/hhp3_h3k4me3_dedup.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group2/bw/k4test2_hi.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/HHP3_k27me3_S3_dedup.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group2/bw/k27test2_hi.bw
+    jobid: 5
+    wildcards: cohort=group2, sample=k27test2, identifier=hi
+
+
+    bamCoverage     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/HHP3_k27me3_S3_dedup.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group2/bw/k27test2_hi.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/hhp3_h3k4me3_dedup.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group1/bw/k4test_yo.bw
+    jobid: 7
+    wildcards: cohort=group1, sample=k4test, identifier=yo
+
+
+    bamCoverage     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/hhp3_h3k4me3_dedup.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group1/bw/k4test_yo.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/HHP3_k27me3_S3_dedup.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group1/bw/k27test_yo.bw
+    jobid: 8
+    wildcards: cohort=group1, sample=k27test, identifier=yo
+
+
+    bamCoverage     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_plasma/HHP3_k27me3_S3_dedup.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/group1/bw/k27test_yo.bw
+    
+Finished job 6.
+1 of 9 steps (11%) done
+Finished job 7.
+2 of 9 steps (22%) done
+slurmstepd: error: *** JOB 7890775 ON node116 CANCELLED AT 2023-02-02T15:16:04 ***

@@ -1,0 +1,151 @@
+Running on H4H cluster
+Provided cluster nodes: 15
+Unlimited resources: cpus, time_min, mem_mb
+Job counts:
+	count	jobs
+	1	all
+	12	bamCoverage
+	4	compute_matrix_cohort
+	4	plot
+	21
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/ENCODEk27downsample.bw
+    jobid: 13
+    wildcards: cohort=subsampled_k27_fwd_noRPKM, sample=ENCODEk27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/ENCODEk27downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_k27me3_SUDHL6_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/mediak27downsample.bw
+    jobid: 12
+    wildcards: cohort=subsampled_k27_fwd_noRPKM, sample=mediak27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_k27me3_SUDHL6_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/mediak27downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_k27me3_SUDHL6_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/mediak27downsample.bw
+    jobid: 15
+    wildcards: cohort=subsampled_k27_fwd_RPKM, sample=mediak27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_k27me3_SUDHL6_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/mediak27downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/ENCODEk4downsample.bw
+    jobid: 19
+    wildcards: cohort=subsampled_k4_fwd_RPKM, sample=ENCODEk4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/ENCODEk4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/ENCODEk4downsample.bw
+    jobid: 10
+    wildcards: cohort=subsampled_k4_fwd_noRPKM, sample=ENCODEk4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/ENCODEk4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/plasmak27downsample.bw
+    jobid: 14
+    wildcards: cohort=subsampled_k27_fwd_noRPKM, sample=plasmak27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/plasmak27downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_K4me3_SUDHL6.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/mediak4downsample.bw
+    jobid: 11
+    wildcards: cohort=subsampled_k4_fwd_noRPKM, sample=mediak4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_K4me3_SUDHL6.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/mediak4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_K4me3_SUDHL6.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/mediak4downsample.bw
+    jobid: 18
+    wildcards: cohort=subsampled_k4_fwd_RPKM, sample=mediak4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_K4me3_SUDHL6.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/mediak4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/plasmak4downsample.bw
+    jobid: 20
+    wildcards: cohort=subsampled_k4_fwd_RPKM, sample=plasmak4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/plasmak4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/plasmak4downsample.bw
+    jobid: 9
+    wildcards: cohort=subsampled_k4_fwd_noRPKM, sample=plasmak4downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM/bw/plasmak4downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/ENCODEk27downsample.bw
+    jobid: 17
+    wildcards: cohort=subsampled_k27_fwd_RPKM, sample=ENCODEk27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/ENCODEk27downsample.bw
+    
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/plasmak27downsample.bw
+    jobid: 16
+    wildcards: cohort=subsampled_k27_fwd_RPKM, sample=plasmak27downsample
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+    bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing RPKM -bs 1 --samFlagExclude 16 --extendReads 200 --centerReads --samFlagInclude 64     -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples.bam     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/plasmak27downsample.bw
+    
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM/bw/ENCODEk27downsample.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 17, external: Submitted batch job 7896285, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.5x8nmldn/snakejob.bamCoverage.17.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM/bw/ENCODEk4downsample.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 19, external: Submitted batch job 7896278, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.5x8nmldn/snakejob.bamCoverage.19.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+slurmstepd: error: *** JOB 7896274 ON node55 CANCELLED AT 2023-02-02T19:04:19 ***

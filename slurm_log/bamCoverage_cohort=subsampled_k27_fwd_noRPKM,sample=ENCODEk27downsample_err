@@ -1,0 +1,27 @@
+bamCoverage -bl /cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz -p max --normalizeUsing None -bs 1 --samFlagExclude 16 -b /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam  -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM/bw/ENCODEk27downsample.bw
+bamFilesList: ['/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam']
+binLength: 1
+numberOfSamples: None
+blackListFileName: ['/cluster/projects/scottgroup/people/sasha/reference/hg38-blacklist.v2.bed.gz']
+skipZeroOverZero: False
+bed_and_bin: False
+genomeChunkSize: None
+defaultFragmentLength: read length
+numberOfProcessors: 38
+verbose: False
+region: None
+bedFile: None
+minMappingQuality: None
+ignoreDuplicates: False
+chrsToSkip: []
+stepSize: 1
+center_read: False
+samFlag_include: None
+samFlag_exclude: 16
+minFragmentLength: 0
+maxFragmentLength: 0
+zerosToNans: False
+smoothLength: None
+save_data: False
+out_file_for_raw_data: None
+maxPairedFragmentLength: 1000

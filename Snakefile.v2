@@ -1,0 +1,155 @@
+import yaml
+import pandas as pd
+import gzip
+import statistics
+import glob
+
+
+
+# ------------ #
+#  Base Setup  #
+# ------------ #
+
+configfile: "config.yaml"
+
+path_to_data = config['data']['base_path']
+
+def get_cohort_data(cohort):
+    """Parses the samplesheet for a specific cohort.
+    """
+    
+    samplesheet = pd.read_csv(config['data']['cohorts'][cohort]['samplesheet'], comment='#').drop_duplicates()
+    return samplesheet
+
+def get_all_samples(cohort=None):
+    """Retrieves all samples to be processed.
+    Does so by calling get_cohort_data, and therefore filters out excluded_cases.
+    Keyword arguments:
+        cohort -- Name of a cohort, OPTIONAL. If not specified, returns all samples
+                  across all cohorts.
+    """
+    
+    all_samples = pd.concat([
+        get_cohort_data(cohort_name).assign(cohort_name = cohort_name)
+        for cohort_name
+        in config['data']['cohorts']
+        if config['data']['cohorts'][cohort_name]['active']
+        ])
+
+    if cohort is None:
+        return(all_samples)
+    else:
+        return(all_samples[all_samples.cohort_name == cohort])
+
+def get_all_samples_list(cohort=None):
+    """Returns all samples in list format.
+    By calling get_all_samples()
+    """
+    
+    return get_all_samples(cohort).path.unique().tolist() #CHANGED TO HAVE PATH
+
+def get_all_samplesnames_list(cohort=None):
+    """Returns all samples in list format.
+    By calling get_all_samples()
+    """
+    
+
+    
+    return get_all_samples(cohort).sample_name.unique().tolist() #CHANGED TO HAVE PATH
+
+
+
+def get_all_samples_with_cohorts():
+    """Returns a list of tuples with cohort name and sample name."""
+    samples = get_all_samples()[['cohort_name', 'sample_name']]
+    return(zip(
+        samples.drop_duplicates().cohort_name.tolist(),
+        samples.drop_duplicates().sample_name.tolist()
+    ))
+
+def get_sample_path(cohort, sample):
+    """Retrieves the path to the fastq file.
+    Keyword arguments:
+        cohort -- name of the cohort whose samplesheet should be accessed.
+        sample -- identifier of the sample as specified in the samplesheet.
+        library -- integer representing the library index as specified in the samplesheet.
+        read_in_pair -- 1 or 2 - representing read 1 or read 2 in paired end data.
+    """
+
+    cohort_data = get_cohort_data(cohort)
+    sample_line = cohort_data[
+        (cohort_data.sample_name == sample)]
+    return sample_line.path.to_list()[0]
+
+
+# ------------------------------ #
+#  Beginning of Snakemake Rules  #
+# ------------------------------ #
+
+rule all:
+  input:
+    expand(
+            [path_to_data + '/results/{cohort}/plots/{cohort}_{bed}_{identifier}.matrix_plot.pdf'.format(
+                    cohort=v[0],
+                    sample=v[1],
+                    identifier=config["data"]["cohorts"][v[0]]["settings"]["identifier"],
+                    bed= lambda wildcards: config["data"]["cohorts"][v[0]]["settings"]["bed_dir"] # this is incorrect. 
+                ) for v in get_all_samples_with_cohorts()
+            ]
+        )
+  resources: cpus=2, mem_mb=25000, time_min=180
+
+rule bamCoverage:
+  input:
+    lambda wildcards: get_sample_path(wildcards.cohort, wildcards.sample)
+  output: 
+    bw=path_to_data + "/results/{cohort}/bw/{sample}.bw"
+  params:
+    code= lambda wildcards: config["data"]["cohorts"][wildcards.cohort]["settings"]["bamCoverage_code"],
+    single_ended= lambda wildcards: config["data"]["cohorts"][wildcards.cohort]["settings"]["single_ended"]
+  resources: cpus=2, mem_mb=30000, time_min=180
+  run:
+    if wildcards.sample not in params.single_ended:
+        shell("bamCoverage {params.code} -b {input} -o {output.bw} --extendReads --centerReads --samFlagInclude 64")
+    else:
+        shell("bamCoverage {params.code} -b {input}  -o {output.bw}")
+
+rule compute_matrix_cohort:
+  input:
+        lambda wildcards: expand(
+        path_to_data + '/results/' + wildcards.cohort + '/bw/{sample}.bw',
+        sample = get_all_samplesnames_list(wildcards.cohort)
+        )
+  output:
+    matrix=path_to_data + "/results/{cohort}/matrices/{cohort}_{bedname}_{identifier}.matrix.gz"
+  params:
+    code= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['computeMatrix_code'],
+    bed= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['bed_dir']
+  resources: cpus=2, mem_mb=25000, time_min=180
+  shell:
+    """
+    computeMatrix {params.code} \
+    -S {input} \
+    -R {params.bed} \
+    -o {output.matrix}
+    """
+
+
+rule plot:
+    input:
+        lambda wildcards:
+        path_to_data + '/results/' + wildcards.cohort + '/matrices/' + wildcards.cohort + '_' + wildcards.bed + '_' + wildcards.identifier + '.matrix.gz',
+    output:
+        plot_file = path_to_data + '/results/{cohort}/plots/{cohort}_{bed}_{identifier}.matrix_plot.pdf'
+    params:
+        code= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['plot_command']
+    resources: cpus=1, mem_mb=5000, time_min=60
+    shell:
+        """
+        {params.code} \
+        -m {input} \
+        -o {output.plot_file}
+        """
+
+
+

@@ -1,0 +1,4 @@
+Running on H4H cluster
+NameError in line 140 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+name 'wildcards' is not defined
+  File "/cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile", line 140, in <module>

@@ -1,0 +1,8 @@
+Running on H4H cluster
+Building DAG of jobs...
+MissingInputException in line 136 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Missing input files for rule plot:
+plasmak27downsample
+refpoint_a10000b5000_TSS
+ENCODEk27downsample
+mediak27downsample

@@ -1,0 +1,191 @@
+Running on H4H cluster
+Provided cluster nodes: 15
+Unlimited resources: time_min, mem_mb, cpus
+Job counts:
+	count	jobs
+	1	all
+	16	bamCoverage
+	4	compute_matrix_cohort
+	4	plot
+	25
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S16_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw
+    jobid: 22
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S13_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.1downsample_1M.bw
+    jobid: 15
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=mediak27.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw
+    jobid: 21
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=plasmak27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/ENCODEk27downsample_1M.bw
+    jobid: 13
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=ENCODEk27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S18_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.2downsample_1M.bw
+    jobid: 12
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=mediak4.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/plasmak27downsample_1M.bw
+    jobid: 14
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=plasmak27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S18_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.2downsample_1M.bw
+    jobid: 17
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=mediak4.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/plasmak4downsample_1M.bw
+    jobid: 9
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=plasmak4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    jobid: 23
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=ENCODEk27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S16_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.2downsample_1M.bw
+    jobid: 16
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=mediak27.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S13_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw
+    jobid: 24
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/plasmak4downsample_1M.bw
+    jobid: 20
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=plasmak4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/ENCODEk4downsample_1M.bw
+    jobid: 18
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=ENCODEk4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S16_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.1M.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.1downsample_1M.bw
+    jobid: 19
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=mediak4.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S16_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.1M.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.1downsample_1M.bw
+    jobid: 10
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=mediak4.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 22, external: Submitted batch job 7897322, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.22.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.1downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 15, external: Submitted batch job 7897323, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.15.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 21, external: Submitted batch job 7897324, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.21.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/ENCODEk27downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 13, external: Submitted batch job 7897325, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.13.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.2downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 12, external: Submitted batch job 7897326, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.12.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/plasmak27downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 14, external: Submitted batch job 7897327, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.14.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.2downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 17, external: Submitted batch job 7897328, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.17.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/plasmak4downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 9, external: Submitted batch job 7897329, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.9.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 23, external: Submitted batch job 7897330, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.23.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.2downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 16, external: Submitted batch job 7897331, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.16.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 24, external: Submitted batch job 7897332, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.24.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/plasmak4downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 20, external: Submitted batch job 7897333, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.20.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/ENCODEk4downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 18, external: Submitted batch job 7897334, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.18.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.1downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 19, external: Submitted batch job 7897335, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.19.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job bamCoverage while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.1downsample_1M.bw.
+ClusterJobException in line 101 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule bamCoverage on cluster (jobid: 10, external: Submitted batch job 7897336, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.ropswv86/snakejob.bamCoverage.10.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Exiting because a job execution failed. Look above for error message

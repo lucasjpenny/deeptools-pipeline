@@ -1,0 +1,282 @@
+Running on H4H cluster
+Provided cluster nodes: 15
+Unlimited resources: mem_mb, time_min, cpus
+Job counts:
+	count	jobs
+	1	all
+	16	bamCoverage
+	4	compute_matrix_cohort
+	4	plot
+	25
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/plasmak4downsample_1M.bw
+    jobid: 20
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=plasmak4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S16_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.2downsample_1M.bw
+    jobid: 12
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=mediak27.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S18_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.2downsample_1M.bw
+    jobid: 21
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=mediak4.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/ENCODEk27downsample_1M.bw
+    jobid: 9
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=ENCODEk27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/ENCODEk4downsample_1M.bw
+    jobid: 17
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=ENCODEk4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/plasmak27downsample_1M.bw
+    jobid: 11
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=plasmak27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S16_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.1M.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.1downsample_1M.bw
+    jobid: 18
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=mediak4.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S13_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw
+    jobid: 15
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/plasmak4downsample_1M.bw
+    jobid: 23
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=plasmak4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S13_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.1downsample_1M.bw
+    jobid: 10
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, sample=mediak27.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S16_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw
+    jobid: 14
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw
+    jobid: 16
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=plasmak27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S16_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.1M.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.1downsample_1M.bw
+    jobid: 22
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=mediak4.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S18_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.2downsample_1M.bw
+    jobid: 19
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, sample=mediak4.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    jobid: 13
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=ENCODEk27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+Finished job 18.
+1 of 25 steps (4%) done
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/ENCODEk4downsample_1M.bw
+    jobid: 24
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, sample=ENCODEk4downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+Finished job 11.
+2 of 25 steps (8%) done
+Finished job 17.
+3 of 25 steps (12%) done
+Finished job 9.
+4 of 25 steps (16%) done
+Finished job 10.
+5 of 25 steps (20%) done
+Finished job 12.
+6 of 25 steps (24%) done
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/matrices/subsampled_k27_fwd_noRPKM_1M_{identifier}.matrix.gz
+    jobid: 5
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, identifier={identifier}
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/1HG38_TSS+TES_ProteinCodingGenes.bed     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/matrices/subsampled_k27_fwd_noRPKM_1M_{identifier}.matrix.gz
+    
+Finished job 21.
+7 of 25 steps (28%) done
+Finished job 19.
+8 of 25 steps (32%) done
+Finished job 13.
+9 of 25 steps (36%) done
+Finished job 22.
+10 of 25 steps (40%) done
+Finished job 20.
+11 of 25 steps (44%) done
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/plasmak4downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/ENCODEk4downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/matrices/subsampled_k4_fwd_noRPKM_1M_{identifier}.matrix.gz
+    jobid: 7
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, identifier={identifier}
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/plasmak4downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/mediak4.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/bw/ENCODEk4downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/1HG38_TSS+TES_ProteinCodingGenes.bed     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/matrices/subsampled_k4_fwd_noRPKM_1M_{identifier}.matrix.gz
+    
+Finished job 14.
+12 of 25 steps (48%) done
+Finished job 23.
+13 of 25 steps (52%) done
+Finished job 16.
+14 of 25 steps (56%) done
+Finished job 15.
+15 of 25 steps (60%) done
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_{identifier}.matrix.gz
+    jobid: 6
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, identifier={identifier}
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/1HG38_TSS+TES_ProteinCodingGenes.bed     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_{identifier}.matrix.gz
+    
+Finished job 24.
+16 of 25 steps (64%) done
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/plasmak4downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/ENCODEk4downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/matrices/subsampled_k4_fwd_RPKM_1M_{identifier}.matrix.gz
+    jobid: 8
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, identifier={identifier}
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/plasmak4downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/mediak4.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/bw/ENCODEk4downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/1HG38_TSS+TES_ProteinCodingGenes.bed     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/matrices/subsampled_k4_fwd_RPKM_1M_{identifier}.matrix.gz
+    
+Finished job 5.
+17 of 25 steps (68%) done
+
+rule plot:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/matrices/subsampled_k27_fwd_noRPKM_1M_{identifier}.matrix.gz
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 1
+    wildcards: cohort=subsampled_k27_fwd_noRPKM_1M, identifier=refpoint_a10000b5000_TSS
+    resources: cpus=1, mem_mb=5000, time_min=60
+
+
+        plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/matrices/subsampled_k27_fwd_noRPKM_1M_{identifier}.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+        
+Finished job 1.
+18 of 25 steps (72%) done
+Finished job 6.
+19 of 25 steps (76%) done
+
+rule plot:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_{identifier}.matrix.gz
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 2
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, identifier=refpoint_a10000b5000_TSS
+    resources: cpus=1, mem_mb=5000, time_min=60
+
+
+        plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_{identifier}.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+        
+Finished job 2.
+20 of 25 steps (80%) done
+Finished job 7.
+21 of 25 steps (84%) done
+
+rule plot:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/matrices/subsampled_k4_fwd_noRPKM_1M_{identifier}.matrix.gz
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 3
+    wildcards: cohort=subsampled_k4_fwd_noRPKM_1M, identifier=refpoint_a10000b5000_TSS
+    resources: cpus=1, mem_mb=5000, time_min=60
+
+
+        plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/matrices/subsampled_k4_fwd_noRPKM_1M_{identifier}.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+        
+Finished job 3.
+22 of 25 steps (88%) done
+Finished job 8.
+23 of 25 steps (92%) done
+
+rule plot:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/matrices/subsampled_k4_fwd_RPKM_1M_{identifier}.matrix.gz
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 4
+    wildcards: cohort=subsampled_k4_fwd_RPKM_1M, identifier=refpoint_a10000b5000_TSS
+    resources: cpus=1, mem_mb=5000, time_min=60
+
+
+        plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/matrices/subsampled_k4_fwd_RPKM_1M_{identifier}.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+        
+Finished job 4.
+24 of 25 steps (96%) done
+
+localrule all:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_noRPKM_1M/plots/subsampled_k27_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_RPKM_1M/plots/subsampled_k4_fwd_RPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k4_fwd_noRPKM_1M/plots/subsampled_k4_fwd_noRPKM_1M_refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 0
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+Finished job 0.
+25 of 25 steps (100%) done
