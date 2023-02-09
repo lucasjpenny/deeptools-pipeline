@@ -148,7 +148,7 @@ rule plot:
         plot_file = path_to_data + '/results/{cohort}/plots/{cohort}.{bed}.{identifier}.matrix_plot.pdf'
     params:
         code= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['plot_command']
-    resources: cpus=1, mem_mb=5000, time_min=60
+    resources: cpus=1, mem_mb=10000, time_min=60
     shell:
         """
         {params.code} \

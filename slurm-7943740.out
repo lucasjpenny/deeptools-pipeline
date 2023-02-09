@@ -1,6 +1,6 @@
 Running on H4H cluster
 Provided cluster nodes: 20
-Unlimited resources: cpus, time_min, mem_mb
+Unlimited resources: cpus, mem_mb, time_min
 Job counts:
 	count	jobs
 	1	all
@@ -10,15 +10,10 @@ Job counts:
 rule plot:
     input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix.gz
     output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix_plot.pdf
-    jobid: 2
+    jobid: 1
     wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=3UCSC_CpG_islands_plus_shores.bed, identifier=refpoint_a10000b5000_TSS
-    resources: cpus=1, mem_mb=5000, time_min=60
+    resources: cpus=1, mem_mb=10000, time_min=60
 
 
         plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix_plot.pdf
         
-Error in job plot while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix_plot.pdf.
-ClusterJobException in line 142 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
-Error executing rule plot on cluster (jobid: 2, external: Submitted batch job 7943735, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.35cwyvmx/snakejob.plot.2.sh). For detailed error see the cluster log.
-Will exit after finishing currently running jobs.
-Exiting because a job execution failed. Look above for error message
