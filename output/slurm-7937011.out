@@ -1,0 +1,111 @@
+Running on H4H cluster
+Provided cluster nodes: 20
+Unlimited resources: time_min, mem_mb, cpus
+Job counts:
+	count	jobs
+	1	all
+	4	bamCoverage
+	4	compute_matrix_cohort
+	1	plot
+	10
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S16_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw
+    jobid: 7
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.2downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw
+    jobid: 6
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=plasmak27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    jobid: 8
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=ENCODEk27downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+
+rule bamCoverage:
+    input: /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/k27me3_SUDHL6_S13_dedup_mapq_1Mreads.bam
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw
+    jobid: 9
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, sample=mediak27.1downsample_1M
+    resources: cpus=2, mem_mb=30000, time_min=180
+
+Finished job 7.
+1 of 10 steps (10%) done
+Finished job 6.
+2 of 10 steps (20%) done
+Finished job 9.
+3 of 10 steps (30%) done
+Finished job 8.
+4 of 10 steps (40%) done
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_3UCSC_CpG_islands_plus_shores.bedTSS.matrix.gz
+    jobid: 5
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=3UCSC_CpG_islands_plus_shores.bedTS, identifier=S
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/3UCSC_CpG_islands_plus_shores.bedTS     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_3UCSC_CpG_islands_plus_shores.bedTSS.matrix.gz
+    
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_2HG38_FirstExonEnd_ProteinCodingGenes.bedTSS.matrix.gz
+    jobid: 4
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=2HG38_FirstExonEnd_ProteinCodingGenes.bedTS, identifier=S
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/2HG38_FirstExonEnd_ProteinCodingGenes.bedTS     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_2HG38_FirstExonEnd_ProteinCodingGenes.bedTSS.matrix.gz
+    
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_OLD1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz
+    jobid: 3
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=OLD1HG38_TSS+TES_ProteinCodingGenes.bedTS, identifier=S
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/OLD1HG38_TSS+TES_ProteinCodingGenes.bedTS     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_OLD1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz
+    
+
+rule compute_matrix_cohort:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw, /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz
+    jobid: 2
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=1HG38_TSS+TES_ProteinCodingGenes.bedTS, identifier=S
+    resources: cpus=2, mem_mb=25000, time_min=180
+
+
+    computeMatrix reference-point -a 10000 -b 5000 --referencePoint TSS --skipZeros --missingDataAsZero -p max     -S /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/plasmak27downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.1downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/mediak27.2downsample_1M.bw /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/bw/ENCODEk27downsample_1M.bw     -R /cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/4.Regions_bed/1HG38_TSS+TES_ProteinCodingGenes.bedTS     -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz
+    
+Error in job compute_matrix_cohort while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_3UCSC_CpG_islands_plus_shores.bedTSS.matrix.gz.
+ClusterJobException in line 122 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule compute_matrix_cohort on cluster (jobid: 5, external: Submitted batch job 7937294, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.06qawyup/snakejob.compute_matrix_cohort.5.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job compute_matrix_cohort while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_2HG38_FirstExonEnd_ProteinCodingGenes.bedTSS.matrix.gz.
+ClusterJobException in line 122 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule compute_matrix_cohort on cluster (jobid: 4, external: Submitted batch job 7937295, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.06qawyup/snakejob.compute_matrix_cohort.4.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job compute_matrix_cohort while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_OLD1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz.
+ClusterJobException in line 122 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule compute_matrix_cohort on cluster (jobid: 3, external: Submitted batch job 7937296, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.06qawyup/snakejob.compute_matrix_cohort.3.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Error in job compute_matrix_cohort while creating output file /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M_1HG38_TSS+TES_ProteinCodingGenes.bedTSS.matrix.gz.
+ClusterJobException in line 122 of /cluster/home/t116306uhn/workflows/deeptools-pipeline/Snakefile:
+Error executing rule compute_matrix_cohort on cluster (jobid: 2, external: Submitted batch job 7937297, jobscript: /cluster/home/t116306uhn/workflows/deeptools-pipeline/.snakemake/tmp.06qawyup/snakejob.compute_matrix_cohort.2.sh). For detailed error see the cluster log.
+Will exit after finishing currently running jobs.
+Exiting because a job execution failed. Look above for error message

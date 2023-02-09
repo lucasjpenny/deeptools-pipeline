@@ -1,0 +1,19 @@
+Running on H4H cluster
+Provided cluster nodes: 20
+Unlimited resources: cpus, time_min, mem_mb
+Job counts:
+	count	jobs
+	1	all
+	1	plot
+	2
+
+rule plot:
+    input: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix.gz
+    output: /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix_plot.pdf
+    jobid: 2
+    wildcards: cohort=subsampled_k27_fwd_RPKM_1M, bed=3UCSC_CpG_islands_plus_shores.bed, identifier=refpoint_a10000b5000_TSS
+    resources: cpus=1, mem_mb=5000, time_min=60
+
+
+        plotHeatmap --colorMap Blues         -m /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix.gz         -o /cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/plots/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix_plot.pdf
+        

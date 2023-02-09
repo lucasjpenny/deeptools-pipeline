@@ -1,0 +1,6 @@
+Failed to clean up metadata for the following files because the metadata was not present.
+If this is expected, there is nothing to do.
+Otherwise, the reason might be file system latency or still running jobs.
+Consider running metadata cleanup again.
+Files:
+/cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.OLD1HG38_TSS+TES_ProteinCodingGenes.bed.refpoint_a10000b5000_TSS.matrix.gz

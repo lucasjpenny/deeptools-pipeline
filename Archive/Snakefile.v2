@@ -3,7 +3,6 @@ import pandas as pd
 import gzip
 import statistics
 import glob
-from snakemake.io import glob_wildcards, expand
 
 
 
@@ -54,7 +53,7 @@ def get_all_samplesnames_list(cohort=None):
     By calling get_all_samples()
     """
     
-    return get_all_samples(cohort).sample_name.unique().tolist() #CHANGED To NAMES
+    return get_all_samples(cohort).sample_name.unique().tolist() #CHANGED TO HAVE PATH
 
 
 
@@ -84,8 +83,17 @@ def extract_bedfile_names(directory):
     bed_files = []
     for filename in os.listdir(directory):
         if filename.endswith(".bed"):
+            x = os.path.basename(filename)
+            bed_files.append(x)
+    return bed_files
+
+def extract_bedfile_paths(directory):
+    bed_files = []
+    for filename in os.listdir(directory):
+        if filename.endswith(".bed"):
             bed_files.append(filename)
     return bed_files
+
 
 # ------------------------------ #
 #  Beginning of Snakemake Rules  #
@@ -94,15 +102,16 @@ def extract_bedfile_names(directory):
 rule all:
   input:
     expand(
-            [path_to_data + '/results/{cohort}/plots/{cohort}.{bed}.{identifier}.matrix_plot.pdf'.format(
+            [path_to_data + '/results/{cohort}/plots/{cohort}_{bed}_{identifier}.matrix_plot.pdf'.format(
                     cohort=v[0],
                     sample=v[1],
                     identifier=config["data"]["cohorts"][v[0]]["settings"]["identifier"],
-                    bed = z
-                ) for v in get_all_samples_with_cohorts() for z in extract_bedfile_names(config["data"]["bed_dir"])
+                    bed= extract_bedfile_paths(config["data"]["cohorts"][v[0]]["settings"]["bed_dir"]) # this is incorrect. 
+                ) for v in get_all_samples_with_cohorts()
             ]
         )
-  resources: cpus=2, mem_mb=25000, time_min=180
+  resources: cpus=2, mem_mb=30000, time_min=180
+
 
 rule bamCoverage:
   input:
@@ -112,40 +121,42 @@ rule bamCoverage:
   params:
     code= lambda wildcards: config["data"]["cohorts"][wildcards.cohort]["settings"]["bamCoverage_code"],
     single_ended= lambda wildcards: config["data"]["cohorts"][wildcards.cohort]["settings"]["single_ended"]
-  resources: cpus=2, mem_mb=30000, time_min=400
+  resources: cpus=2, mem_mb=30000, time_min=180
   run:
     if wildcards.sample not in params.single_ended:
         shell("bamCoverage {params.code} -b {input} -o {output.bw} --extendReads --centerReads --samFlagInclude 64")
     else:
         shell("bamCoverage {params.code} -b {input}  -o {output.bw}")
 
+
 rule compute_matrix_cohort:
   input:
-        lambda wildcards: expand(
+        bw_files=lambda wildcards: expand(
         path_to_data + '/results/' + wildcards.cohort + '/bw/{sample}.bw',
         sample = get_all_samplesnames_list(wildcards.cohort)
         )
   output:
-    matrix=path_to_data + "/results/{cohort}/matrices/{cohort}.{bed}.{identifier}.matrix.gz"
+    matrix=path_to_data + "/results/{cohort}/matrices/{cohort}_{bed}_{identifer}.matrix.gz"
   params:
-    code= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['computeMatrix_code'],
-    bed= lambda wildcards: config['data']["bed_dir"] + "/" + wildcards.bed
-  resources: cpus=2, mem_mb=30000, time_min=500
+    code=lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['computeMatrix_code'],
+    bed=lambda wildcards: extract_bedfile_paths(config['data']['cohorts'][wildcards.cohort]['settings']['bed_dir']),
+    beddir =lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['bed_dir']
+  resources: cpus=2, mem_mb=25000, time_min=180
   shell:
     """
     computeMatrix {params.code} \
-    -S {input} \
-    -R {params.bed} \
+    -S {input.bw_files} \
+    -R {params.beddir}/{params.bed} \
     -o {output.matrix}
-    """
+    """   
+
 
 rule plot:
     input:
         lambda wildcards:
-        path_to_data + '/results/' + wildcards.cohort + '/matrices/' + wildcards.cohort + '.' + wildcards.bed + '.' + wildcards.identifier + '.matrix.gz'
-         
+        path_to_data + '/results/' + wildcards.cohort + '/matrices/' + wildcards.cohort + '_' + wildcards.bed + '_' + wildcards.identifier + '.matrix.gz',
     output:
-        plot_file = path_to_data + '/results/{cohort}/plots/{cohort}.{bed}.{identifier}.matrix_plot.pdf'
+        plot_file = path_to_data + '/results/{cohort}/plots/{cohort}_{bed}_{identifier}.matrix_plot.pdf'
     params:
         code= lambda wildcards: config['data']['cohorts'][wildcards.cohort]['settings']['plot_command']
     resources: cpus=1, mem_mb=5000, time_min=60

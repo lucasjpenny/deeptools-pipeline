@@ -1,0 +1,10 @@
+Running on H4H cluster
+IncompleteFilesException:
+The files below seem to be incomplete. If you are sure that certain files are not incomplete, mark them as complete with
+
+    snakemake --cleanup-metadata <filenames>
+
+To re-generate the files rerun your command with the --rerun-incomplete flag.
+Incomplete files:
+/cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.3UCSC_CpG_islands_plus_shores.bed.refpoint_a10000b5000_TSS.matrix.gz
+/cluster/projects/scottgroup/people/lucas/deeptools-pipeline/results/subsampled_k27_fwd_RPKM_1M/matrices/subsampled_k27_fwd_RPKM_1M.OLD1HG38_TSS+TES_ProteinCodingGenes.bed.refpoint_a10000b5000_TSS.matrix.gz
