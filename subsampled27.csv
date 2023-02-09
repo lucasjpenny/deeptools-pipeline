@@ -1,4 +1,0 @@
-sample_name,path
-plasmak27downsample,/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/plasma_HHP3_k27me3_S3_dedup_downsamples.bam
-mediak27downsample,/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/merged_k27me3_SUDHL6_downsampled.bam
-ENCODEk27downsample,/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/2.merged_bam/bam_downsampled/H3K27me3_SUDHL6_ENCODE_ENCFF527XMY_downsampled.bam

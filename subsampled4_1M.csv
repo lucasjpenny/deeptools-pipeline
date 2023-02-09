@@ -1,5 +1,0 @@
-sample_name,path
-plasmak4downsample_1M,"/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/plasma_hhp3_h3k4me3_dedup_downsampled_1Mreads.bam"
-mediak4.1downsample_1M,"/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S16_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.1M.bam"
-mediak4.2downsample_1M,"/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/S18_cfChIP_SUDHL6_K4me3_dedup_mapq_6_1Mreads.bam"
-ENCODEk4downsample_1M,"/cluster/projects/scottgroup/people/lucas/cfChIP-seq_Steven/1.unmerged_bam/bam_downsampled/H3K4me3_SUDHL6_ENCODE_ENCFF077XGD_downsampled_1Mreads.bam"
